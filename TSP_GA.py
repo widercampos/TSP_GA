@@ -1,5 +1,8 @@
-""" Testing different genetic algorithms operators
-	to solve a TSP.
+""" This is a simple genetic algorithm implementation to solve the TSP.
+    It was made as a small research project for one of the classes I took.
+    The goal was to test the performance of the combinations between order crossover and
+    partially-mapped crossover, for the crossover operators, and the tournament and 
+    roulette wheel selection operators.
 
 	Widerlani Campos, 2017 """
 
@@ -25,7 +28,7 @@ class Tour:
 
 	def updateLength(self):
 		self.length = tourLength(self.cities)
-
+	
 	def __gt__(self, other):
 		return self.length > other.length
 
@@ -84,16 +87,6 @@ def genRandomTours(n):
 		tours.append(tour)
 
 	return tours
-
-def printPop(pop):
-	""" prints a population. for testing purposes """
-	i = 0
-	for tour in pop.tours:
-		print("tour ", i, ": [ ", end='')
-		for city in tour.cities:
-			print(city, ", ", end='')
-		print("\b\b] length: ", tour.length)
-		i += 1
 
 def tournamentSelection(pop, tournamentSize):
 	"""
